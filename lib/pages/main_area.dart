@@ -331,14 +331,14 @@ final List<Map<String, dynamic>> categories = [
   {'name': 'Bøker', 'icon': Icons.book},
   {'name': 'Gavekort', 'icon': Icons.card_giftcard},
   {'name': 'Kjøtt', 'icon': Icons.eco},
-  {'name': 'Oster', 'icon': Icons.cheese},
+  {'name': 'Oster', 'icon': Icons.set_meal}, // Oster means cheese in Norwegian
   {'name': 'Belysning', 'icon': Icons.lightbulb},
   {'name': 'Dekor', 'icon': Icons.palette},
-  {'name': 'Gardiner', 'icon': '⇧'}, // Using icon character for curtain
-  {'name': 'Møbler', 'icon': 'furniture'}, // Using icon character for furniture
-  {'name': 'Tepper', 'icon': '⇧'}, // Using icon character for belonging/charm
-  {'name': 'Bukser', 'icon': '⇧'}, // Using icon character for pants
-  {'name': 'Interiør', 'icon': '⇧'}, // Using icon character for interior
+  {'name': 'Gardiner', 'icon': Icons.vertical_split}, // Curtains
+  {'name': 'Møbler', 'icon': Icons.chair}, // Furniture
+  {'name': 'Tepper', 'icon': Icons.star}, // Belongings/charm
+  {'name': 'Bukser', 'icon': Icons.inventory}, // Pants/clothing
+  {'name': 'Interiør', 'icon': Icons.bedroom_parent}, // Interior
 ];
 
 // Sample products
