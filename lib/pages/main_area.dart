@@ -137,127 +137,128 @@ class MainArea extends StatelessWidget {
                       ],
                     ),
                   ),
-                  // Category Grid
-                  Container(
-                    height: 80,
-                    padding: const EdgeInsets.all(12),
-                    decoration: BoxDecoration(
-                      color: const Color(0xFFFFFFFF),
-                      border: Border(
-                        bottom: BorderSide(
-                          color: const Color(0xFFE0E0E0),
-                          width: 1,
-                        ),
-                      ),
-                    ),
-                    child: ListView.builder(
-                      scrollDirection: Axis.horizontal,
-                      itemCount: categories.length,
-                      itemBuilder: (context, index) {
-                        final category = categories[index];
-                        return Padding(
-                          padding: const EdgeInsets.only(right: 8),
-                          child: Column(
-                            children: [
-                              Container(
-                                width: 60,
-                                height: 60,
-                                decoration: BoxDecoration(
-                                  color: const Color(0xFFF5F5F5),
-                                  borderRadius: BorderRadius.circular(8),
-                                  border: Border.all(
-                                    color: const Color(0xFFE0E0E0),
-                                    width: 1,
-                                  ),
-                                ),
-                                child: Center(
-                                  child: Icon(
-                                    category['icon'],
-                                    color: const Color(0xFF4CAF50),
-                                    size: 28,
-                                  ),
-                                ),
-                              ),
-                              const SizedBox(height: 4),
-                              Text(
-                                category['name'],
-                                style: const TextStyle(
-                                  color: Colors.grey,
-                                  fontSize: 11,
-                                  fontWeight: FontWeight.w500,
-                                ),
-                                textAlign: TextAlign.center,
-                                maxLines: 2,
-                                overflow: TextOverflow.ellipsis,
-                              ),
-                            ],
-                          ),
-                        );
-                      },
-                    ),
-                  ),
-                  // Products Grid
+                  // Category and Products Grid
                   Expanded(
-                    child: Padding(
-                      padding: const EdgeInsets.all(16),
-                      child: GridView.count(
-                        crossAxisCount: 3,
-                        mainAxisSpacing: 12,
-                        crossAxisSpacing: 12,
-                        childAspectRatio: 0.75,
-                        children: products.map((product) {
-                          return Card(
-                            elevation: 2,
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(8),
-                            ),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.stretch,
-                              children: [
-                                // Product Image placeholder
-                                Expanded(
-                                  child: Container(
-                                    color: Colors.grey[200],
-                                    child: Center(
-                                      child: Icon(
-                                        Icons.inventory_2,
-                                        color: Colors.grey[400],
-                                        size: 48,
-                                      ),
-                                    ),
+                    child: SingleChildScrollView(
+                      child: Column(
+                        children: [
+                          // Category Grid - 3 columns like products
+                          Padding(
+                            padding: const EdgeInsets.all(12),
+                            child: GridView.count(
+                              shrinkWrap: true,
+                              physics: const NeverScrollableScrollPhysics(),
+                              crossAxisCount: 3,
+                              mainAxisSpacing: 8,
+                              crossAxisSpacing: 8,
+                              childAspectRatio: 0.8,
+                              children: categories.map((category) {
+                                return Card(
+                                  elevation: 2,
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(8),
                                   ),
-                                ),
-                                // Product Info
-                                Padding(
-                                  padding: const EdgeInsets.all(8),
                                   child: Column(
-                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
-                                      Text(
-                                        product['name'],
-                                        maxLines: 2,
-                                        overflow: TextOverflow.ellipsis,
-                                        style: const TextStyle(
-                                          fontWeight: FontWeight.w500,
-                                          fontSize: 14,
+                                      Container(
+                                        width: 56,
+                                        height: 56,
+                                        decoration: BoxDecoration(
+                                          color: const Color(0xFFF5F5F5),
+                                          borderRadius: BorderRadius.circular(12),
+                                        ),
+                                        child: Center(
+                                          child: Icon(
+                                            category['icon'],
+                                            color: const Color(0xFF4CAF50),
+                                            size: 32,
+                                          ),
                                         ),
                                       ),
-                                      const SizedBox(height: 4),
+                                      const SizedBox(height: 8),
                                       Text(
-                                        'NOK ${product['price'].toStringAsFixed(2)}',
+                                        category['name'],
                                         style: const TextStyle(
-                                          color: Color(0xFF4CAF50),
-                                          fontWeight: FontWeight.w600,
-                                          fontSize: 16,
+                                          color: Colors.grey,
+                                          fontSize: 12,
+                                          fontWeight: FontWeight.w500,
                                         ),
                                       ),
                                     ],
                                   ),
-                                ),
-                              ],
+                                );
+                              }).toList(),
                             ),
-                          );
-                        }).toList(),
+                          ),
+                          // Divider
+                          const Divider(height: 1, thickness: 1),
+                          // Products Grid - 3 columns
+                          Padding(
+                            padding: const EdgeInsets.all(16),
+                            child: GridView.count(
+                              shrinkWrap: true,
+                              physics: const NeverScrollableScrollPhysics(),
+                              crossAxisCount: 3,
+                              mainAxisSpacing: 12,
+                              crossAxisSpacing: 12,
+                              childAspectRatio: 0.75,
+                              children: products.map((product) {
+                                return Card(
+                                  elevation: 2,
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(8),
+                                  ),
+                                  child: Column(
+                                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                                    children: [
+                                      // Product Image placeholder
+                                      Expanded(
+                                        child: Container(
+                                          color: Colors.grey[200],
+                                          child: Center(
+                                            child: Icon(
+                                              Icons.inventory_2,
+                                              color: Colors.grey[400],
+                                              size: 48,
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                      // Product Info
+                                      Padding(
+                                        padding: const EdgeInsets.all(8),
+                                        child: Column(
+                                          crossAxisAlignment: CrossAxisAlignment.start,
+                                          children: [
+                                            Text(
+                                              product['name'],
+                                              maxLines: 2,
+                                              overflow: TextOverflow.ellipsis,
+                                              style: const TextStyle(
+                                                fontWeight: FontWeight.w500,
+                                                fontSize: 14,
+                                              ),
+                                            ),
+                                            const SizedBox(height: 4),
+                                            Text(
+                                              'NOK ${product['price'].toStringAsFixed(2)}',
+                                              style: const TextStyle(
+                                                color: Color(0xFF4CAF50),
+                                                fontWeight: FontWeight.w600,
+                                                fontSize: 16,
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                );
+                              }).toList(),
+                            ),
+                          ),
+                        ],
                       ),
                     ),
                   ),
