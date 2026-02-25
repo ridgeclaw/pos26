@@ -151,26 +151,25 @@ class MainArea extends StatelessWidget {
                             crossAxisSpacing: 0,
                             childAspectRatio: 0.8,
                             children: categories.map((category) {
-                              return Card(
-                                elevation: 0,
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(4),
-                                  side: const BorderSide(
-                                    color: Color(0xFFE0E0E0),
+                              return Container(
+                                height: 48,
+                                decoration: BoxDecoration(
+                                  border: Border.all(
+                                    color: const Color(0xFFE0E0E0),
                                     width: 1,
                                   ),
+                                  borderRadius: BorderRadius.circular(4),
                                 ),
-                                child: Padding(
-                                  padding: const EdgeInsets.symmetric(horizontal: 8),
-                                  child: Column(
+                                child: Center(
+                                  child: Row(
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
                                       Icon(
                                         category['icon'],
                                         color: const Color(0xFF4CAF50),
-                                        size: 16,
+                                        size: 18,
                                       ),
-                                      const SizedBox(height: 2),
+                                      const SizedBox(width: 4),
                                       Text(
                                         category['name'],
                                         style: const TextStyle(
