@@ -150,13 +150,13 @@ class MainArea extends StatelessWidget {
                               crossAxisCount: 3,
                               mainAxisSpacing: 0,
                               crossAxisSpacing: 0,
-                              mainAxisExtent: 10,
+                              mainAxisExtent: 32,
                             ),
                             itemCount: categories.length,
                             itemBuilder: (context, index) {
                               final category = categories[index];
                               return Container(
-                                height: 10,
+                                height: 32,
                                 decoration: BoxDecoration(
                                   border: Border.all(
                                     color: const Color(0xFFE0E0E0),
