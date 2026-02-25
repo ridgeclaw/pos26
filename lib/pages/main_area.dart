@@ -143,53 +143,36 @@ class MainArea extends StatelessWidget {
                       child: Column(
                         children: [
                           // Category Grid - 3 columns like products
-                          Padding(
-                            padding: const EdgeInsets.all(12),
-                            child: GridView.count(
-                              shrinkWrap: true,
-                              physics: const NeverScrollableScrollPhysics(),
-                              crossAxisCount: 3,
-                              mainAxisSpacing: 8,
-                              crossAxisSpacing: 8,
-                              childAspectRatio: 0.8,
-                              children: categories.map((category) {
-                                return Card(
-                                  elevation: 2,
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(8),
-                                  ),
-                                  child: Column(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                      Container(
-                                        width: 56,
-                                        height: 56,
-                                        decoration: BoxDecoration(
-                                          color: const Color(0xFFF5F5F5),
-                                          borderRadius: BorderRadius.circular(12),
-                                        ),
-                                        child: Center(
-                                          child: Icon(
-                                            category['icon'],
-                                            color: const Color(0xFF4CAF50),
-                                            size: 32,
-                                          ),
-                                        ),
+                          GridView.count(
+                            shrinkWrap: true,
+                            physics: const NeverScrollableScrollPhysics(),
+                            crossAxisCount: 3,
+                            mainAxisSpacing: 0,
+                            crossAxisSpacing: 0,
+                            childAspectRatio: 0.8,
+                            children: categories.map((category) {
+                              return Center(
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Icon(
+                                      category['icon'],
+                                      color: const Color(0xFF4CAF50),
+                                      size: 24,
+                                    ),
+                                    const SizedBox(height: 4),
+                                    Text(
+                                      category['name'],
+                                      style: const TextStyle(
+                                        color: Colors.grey,
+                                        fontSize: 11,
+                                        fontWeight: FontWeight.w500,
                                       ),
-                                      const SizedBox(height: 8),
-                                      Text(
-                                        category['name'],
-                                        style: const TextStyle(
-                                          color: Colors.grey,
-                                          fontSize: 12,
-                                          fontWeight: FontWeight.w500,
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                );
-                              }).toList(),
-                            ),
+                                    ),
+                                  ],
+                                ),
+                              );
+                            }).toList(),
                           ),
                           // Divider
                           const Divider(height: 1, thickness: 1),
