@@ -143,14 +143,18 @@ class MainArea extends StatelessWidget {
                       child: Column(
                         children: [
                           // Category Grid - 3 columns like products
-                          GridView.count(
+                          GridView.builder(
                             shrinkWrap: true,
                             physics: const NeverScrollableScrollPhysics(),
-                            crossAxisCount: 3,
-                            mainAxisSpacing: 0,
-                            crossAxisSpacing: 0,
-                            childAspectRatio: 0.8,
-                            children: categories.map((category) {
+                            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                              crossAxisCount: 3,
+                              mainAxisSpacing: 0,
+                              crossAxisSpacing: 0,
+                              childAspectRatio: 1.0, // Use 1.0 for square items
+                            ),
+                            itemCount: categories.length,
+                            itemBuilder: (context, index) {
+                              final category = categories[index];
                               return Container(
                                 height: 48,
                                 decoration: BoxDecoration(
@@ -160,29 +164,28 @@ class MainArea extends StatelessWidget {
                                   ),
                                   borderRadius: BorderRadius.circular(4),
                                 ),
-                                child: Center(
-                                  child: Row(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                      Icon(
-                                        category['icon'],
-                                        color: const Color(0xFF4CAF50),
-                                        size: 18,
+                                alignment: Alignment.center,
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Icon(
+                                      category['icon'],
+                                      color: const Color(0xFF4CAF50),
+                                      size: 18,
+                                    ),
+                                    const SizedBox(width: 4),
+                                    Text(
+                                      category['name'],
+                                      style: const TextStyle(
+                                        color: Colors.grey,
+                                        fontSize: 10,
+                                        fontWeight: FontWeight.w500,
                                       ),
-                                      const SizedBox(width: 4),
-                                      Text(
-                                        category['name'],
-                                        style: const TextStyle(
-                                          color: Colors.grey,
-                                          fontSize: 10,
-                                          fontWeight: FontWeight.w500,
-                                        ),
-                                      ),
-                                    ],
-                                  ),
+                                    ),
+                                  ],
                                 ),
                               );
-                            }).toList(),
+                            },
                           ),
                           // Divider
                           const Divider(height: 1, thickness: 1),
