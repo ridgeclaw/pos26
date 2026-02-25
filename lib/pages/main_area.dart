@@ -151,25 +151,36 @@ class MainArea extends StatelessWidget {
                             crossAxisSpacing: 0,
                             childAspectRatio: 0.8,
                             children: categories.map((category) {
-                              return Center(
-                                child: Column(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    Icon(
-                                      category['icon'],
-                                      color: const Color(0xFF4CAF50),
-                                      size: 24,
-                                    ),
-                                    const SizedBox(height: 4),
-                                    Text(
-                                      category['name'],
-                                      style: const TextStyle(
-                                        color: Colors.grey,
-                                        fontSize: 11,
-                                        fontWeight: FontWeight.w500,
+                              return Card(
+                                elevation: 0,
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(4),
+                                  side: const BorderSide(
+                                    color: Color(0xFFE0E0E0),
+                                    width: 1,
+                                  ),
+                                ),
+                                child: Padding(
+                                  padding: const EdgeInsets.symmetric(horizontal: 8),
+                                  child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Icon(
+                                        category['icon'],
+                                        color: const Color(0xFF4CAF50),
+                                        size: 16,
                                       ),
-                                    ),
-                                  ],
+                                      const SizedBox(height: 2),
+                                      Text(
+                                        category['name'],
+                                        style: const TextStyle(
+                                          color: Colors.grey,
+                                          fontSize: 10,
+                                          fontWeight: FontWeight.w500,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
                                 ),
                               );
                             }).toList(),
