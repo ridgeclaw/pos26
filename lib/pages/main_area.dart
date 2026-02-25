@@ -162,7 +162,6 @@ class MainArea extends StatelessWidget {
                                     color: const Color(0xFFE0E0E0),
                                     width: 1,
                                   ),
-                                  borderRadius: BorderRadius.circular(4),
                                 ),
                                 alignment: Alignment.center,
                                 child: Row(
