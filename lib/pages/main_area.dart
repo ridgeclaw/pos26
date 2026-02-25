@@ -150,7 +150,7 @@ class MainArea extends StatelessWidget {
                               crossAxisCount: 3,
                               mainAxisSpacing: 0,
                               crossAxisSpacing: 0,
-                              childAspectRatio: 1.0, // Use 1.0 for square items
+                              childAspectRatio: 0.7, // Width / height = 0.7 → shorter height
                             ),
                             itemCount: categories.length,
                             itemBuilder: (context, index) {
