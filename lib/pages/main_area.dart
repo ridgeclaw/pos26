@@ -8,7 +8,7 @@ class MainArea extends StatelessWidget {
         children: [
           // Left Sidebar - Categories
           Container(
-            width: 250,
+            width: 200,
             color: const Color(0xFF1a1a1a),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -73,13 +73,13 @@ class MainArea extends StatelessWidget {
               ],
             ),
           ),
-          // Main Content - Product Grid
+          // Main Content
           Expanded(
             child: Container(
               color: const Color(0xFFFFFFFF),
               child: Column(
                 children: [
-                  // Top Bar
+                  // Top Bar - Search and Sort
                   Container(
                     height: 60,
                     padding: const EdgeInsets.symmetric(horizontal: 16),
@@ -135,6 +135,65 @@ class MainArea extends StatelessWidget {
                           ),
                         ),
                       ],
+                    ),
+                  ),
+                  // Category Grid
+                  Container(
+                    height: 80,
+                    padding: const EdgeInsets.all(12),
+                    decoration: BoxDecoration(
+                      color: const Color(0xFFFFFFFF),
+                      border: Border(
+                        bottom: BorderSide(
+                          color: const Color(0xFFE0E0E0),
+                          width: 1,
+                        ),
+                      ),
+                    ),
+                    child: ListView.builder(
+                      scrollDirection: Axis.horizontal,
+                      itemCount: categories.length,
+                      itemBuilder: (context, index) {
+                        final category = categories[index];
+                        return Padding(
+                          padding: const EdgeInsets.only(right: 8),
+                          child: Column(
+                            children: [
+                              Container(
+                                width: 60,
+                                height: 60,
+                                decoration: BoxDecoration(
+                                  color: const Color(0xFFF5F5F5),
+                                  borderRadius: BorderRadius.circular(8),
+                                  border: Border.all(
+                                    color: const Color(0xFFE0E0E0),
+                                    width: 1,
+                                  ),
+                                ),
+                                child: Center(
+                                  child: Icon(
+                                    category['icon'],
+                                    color: const Color(0xFF4CAF50),
+                                    size: 28,
+                                  ),
+                                ),
+                              ),
+                              const SizedBox(height: 4),
+                              Text(
+                                category['name'],
+                                style: const TextStyle(
+                                  color: Colors.grey,
+                                  fontSize: 11,
+                                  fontWeight: FontWeight.w500,
+                                ),
+                                textAlign: TextAlign.center,
+                                maxLines: 2,
+                                overflow: TextOverflow.ellipsis,
+                              ),
+                            ],
+                          ),
+                        );
+                      },
                     ),
                   ),
                   // Products Grid
