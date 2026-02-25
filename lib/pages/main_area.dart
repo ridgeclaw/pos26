@@ -82,9 +82,9 @@ class MainArea extends StatelessWidget {
                   // Top Bar
                   Container(
                     height: 60,
-                    color: const Color(0xFFF5F5F5),
                     padding: const EdgeInsets.symmetric(horizontal: 16),
                     decoration: BoxDecoration(
+                      color: const Color(0xFFF5F5F5),
                       border: Border(
                         bottom: BorderSide(
                           color: const Color(0xFFE0E0E0),
